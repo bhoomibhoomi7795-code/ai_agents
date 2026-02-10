@@ -3,7 +3,8 @@ from email.message import EmailMessage
 from secrets import sender_email, receiver_email, password
 
 # Email details
-def send_email(receiver_email,subject,content):
+def send_email(receiver_email: str, subject: str, content: str) -> None:
+    """Send an email to the specified receiver with the given subject and content."""
    
 # Create email
     msg = EmailMessage()
@@ -19,5 +20,3 @@ def send_email(receiver_email,subject,content):
         server.send_message(msg)
 
     print("Email sent successfully!")
-
-send_email("bhoomibhoomi7795@gmail.com","Test Email from Python","Hello! This email was sent using Python.")
