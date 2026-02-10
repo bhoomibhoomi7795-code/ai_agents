@@ -1,6 +1,8 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.message import EmailMessage
+from secrets import sender_email, receiver_email, password
 
 # Email details
 sender_email = "4mh23cs019@gmail.com"
