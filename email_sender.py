@@ -1,6 +1,4 @@
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from email.message import EmailMessage
 from secrets import sender_email, receiver_email, password
 
@@ -8,11 +6,11 @@ from secrets import sender_email, receiver_email, password
 def send_email(receiver_email,subject,content):
    
 # Create email
-    msg = MIMEMultipart()
+    msg = EmailMessage()
     msg["From"] = sender_email
     msg["To"] = receiver_email
     msg["Subject"] = subject
-    msg.attach(MIMEText(content, "plain"))
+    msg.set_content(content)
 
     # Send email
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
