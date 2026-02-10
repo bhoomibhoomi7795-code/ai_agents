@@ -5,24 +5,21 @@ from email.message import EmailMessage
 from secrets import sender_email, receiver_email, password
 
 # Email details
-sender_email = "4mh23cs019@gmail.com"
-receiver_email = "bhoomibhoomi7795@gmail.com"
-password = "wyan bnqd wiot keio"
-
-subject = "Test Email from Python"
-body = "Hello! This email was sent using Python."
-
+def send_email(receiver_email,subject,content):
+   
 # Create email
-msg = MIMEMultipart()
-msg["From"] = sender_email
-msg["To"] = receiver_email
-msg["Subject"] = subject
-msg.attach(MIMEText(body, "plain"))
+    msg = MIMEMultipart()
+    msg["From"] = sender_email
+    msg["To"] = receiver_email
+    msg["Subject"] = subject
+    msg.attach(MIMEText(content, "plain"))
 
-# Send email
-with smtplib.SMTP("smtp.gmail.com", 587) as server:
-    server.starttls()  # secure connection
-    server.login(sender_email, password)
-    server.send_message(msg)
+    # Send email
+    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        server.starttls()  # secure connection
+        server.login(sender_email, password)
+        server.send_message(msg)
 
-print("Email sent successfully!")
+    print("Email sent successfully!")
+
+send_email("bhoomibhoomi7795@gmail.com","Test Email from Python","Hello! This email was sent using Python.")
